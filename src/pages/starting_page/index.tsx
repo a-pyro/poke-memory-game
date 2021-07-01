@@ -18,7 +18,7 @@ const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
             variant='success'
             className='rounded-pill'
             onClick={() => {
-              setDifficulty(6 / 2);
+              setDifficulty(8 / 2);
               history.push('/board');
             }}
           >
@@ -28,7 +28,7 @@ const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
             variant='warning'
             className='rounded-pill'
             onClick={() => {
-              setDifficulty(12 / 2);
+              setDifficulty(16 / 2);
               history.push('/board');
             }}
           >
@@ -38,7 +38,7 @@ const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
             variant='danger'
             className='rounded-pill'
             onClick={() => {
-              setDifficulty(24 / 2);
+              setDifficulty(32 / 2);
               history.push('/board');
             }}
           >

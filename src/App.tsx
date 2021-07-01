@@ -5,16 +5,19 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import GameBoard from './pages/game_board';
 import GameOver from './pages/game_over';
 import StartingPage from './pages/starting_page';
+import { shufflePokemons } from './utils';
 
 //898 tot pokemon
 
 function App() {
-  const [pokemon, setPokemon] = useState([] as Pokemon[]);
+  const [pokemons, setPokemons] = useState([] as Pokemon[]);
+  const [unCovered, setUnCovered] = useState([] as Pokemon[]);
   const [loading, setLoading] = useState(false);
   const [difficulty, setDifficulty] = useState(0);
 
   useEffect(() => {
     (async () => {
+      if (difficulty === 0) return;
       try {
         setLoading(true);
         for (let i = 0; i < difficulty; i++) {
@@ -24,9 +27,13 @@ function App() {
             `https://pokeapi.co/api/v2/pokemon/${randomNum}`
           );
           const data = await response.json();
+
           console.log(data);
-          setPokemon((prevState) => [...prevState, data]);
+          setPokemons((prevState) =>
+            [...prevState, data, data].sort((a, b) => 0.5 - Math.random())
+          );
         }
+
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -41,7 +48,16 @@ function App() {
         exact
         render={() => <StartingPage setDifficulty={setDifficulty} />}
       />
-      <Route path='/board' render={() => <GameBoard />} />
+      <Route
+        path='/board'
+        render={() => (
+          <GameBoard
+            pokemons={pokemons}
+            loading={loading}
+            setPokemons={setPokemons}
+          />
+        )}
+      />
       <Route path='/results' render={() => <GameOver />} />
     </Router>
   );
