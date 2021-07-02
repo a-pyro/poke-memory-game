@@ -7,18 +7,19 @@ export interface Pokemon {
   game_indices?: any[];
   height?: number;
   held_items?: any[];
-  id?: number;
+  id: number;
   is_default?: boolean;
   location_area_encounters?: string;
   moves?: any[];
   name?: string;
   order?: number;
   past_types?: any[];
-  species?: Species;
+  species: Species;
   sprites: Sprites;
   stats?: Stat[];
   types?: Type[];
   weight?: number;
+  covered?: boolean;
 }
 
 export interface Ability {

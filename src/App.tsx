@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import GameBoard from './pages/game_board';
 import GameOver from './pages/game_over';
 import StartingPage from './pages/starting_page';
-import { shufflePokemons } from './utils';
+import { v4 as uuid } from 'uuid';
 
 //898 tot pokemon
 
@@ -29,8 +29,12 @@ function App() {
           const data = await response.json();
 
           console.log(data);
+          const firstPokemon = { ...data, id: uuid(), covered: true };
+          const secondPokemon = { ...data, id: uuid(), covered: true };
           setPokemons((prevState) =>
-            [...prevState, data, data].sort((a, b) => 0.5 - Math.random())
+            [...prevState, firstPokemon, secondPokemon].sort(
+              (a, b) => 0.5 - Math.random()
+            )
           );
         }
 
@@ -52,6 +56,8 @@ function App() {
         path='/board'
         render={() => (
           <GameBoard
+            unCovered={unCovered}
+            setUnCovered={setUnCovered}
             pokemons={pokemons}
             loading={loading}
             setPokemons={setPokemons}
