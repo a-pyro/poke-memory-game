@@ -18,22 +18,46 @@ const PokemonCard: React.FC<Props> = ({
   unCovered,
   setUnCovered,
 }) => {
-  const [covered, setCovered] = useState(true);
-  const [scoperte, setScoperte] = useState([] as Pokemon[]);
+  // const [covered, setCovered] = useState(true);
+  // const [uncovered, setUncovered] = useState([]);
 
   const handleClick = () => {
-    scoperte.push(pokemon);
-    console.log(pokemon.species.name);
-    setCovered(!covered);
-    console.log(scoperte);
+    //check per non girarli ricliccando una volta scoperti
+    if (unCovered.some((p: Pokemon) => p.id === pokemon.id)) return;
+
+    //cambio la flag e setto lo state
+    const newPokemons = pokemons.map((p: Pokemon) => {
+      if (pokemon.id === p.id) {
+        p.covered = !p.covered;
+        setUnCovered((prev) => [...prev, p]); // lo metto negli scoperti
+        return p;
+      } else {
+        return p;
+      }
+    });
+    setPokemons(newPokemons);
+    if (
+      unCovered.some((p: Pokemon) => p.species.name === pokemon.species.name)
+    ) {
+    }
+
+    //
+
+    // setCovered(!covered);
+
+    // setUnCovered((prevScoperte) => [...prevScoperte, pokemon]);
   };
   return (
-    <Col sm={3} style={{ cursor: 'pointer' }} onClick={handleClick}>
+    <Col
+      sm={3}
+      style={{ cursor: 'pointer', height: '200px', width: '250px' }}
+      onClick={handleClick}
+    >
       <Image
         fluid
         roundedCircle
         src={
-          covered
+          pokemon.covered
             ? '/assets/pokeball.png'
             : pokemon.sprites?.other?.['official-artwork'].front_default
         }

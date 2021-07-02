@@ -27,7 +27,7 @@ const GameBoard: React.FC<Props> = ({
   }, [setPokemons]);
   return (
     <Container fluid>
-      <Row>
+      <Row style={{ maxHeight: '100%' }}>
         {' '}
         {loading ? (
           <Spinner animation='grow' />
