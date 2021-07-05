@@ -10,29 +10,30 @@ interface Props {
   pokemons: Pokemon[];
   setPokemons: React.Dispatch<React.SetStateAction<Pokemon[]>>;
   loading: boolean;
-  unCovered: Pokemon[];
-  setUnCovered: React.Dispatch<React.SetStateAction<Pokemon[]>>;
   lastUncovered: Pokemon;
   setLastUncovered: React.Dispatch<React.SetStateAction<Pokemon>>;
+  checking: boolean;
+  setChecking: React.Dispatch<React.SetStateAction<boolean>>;
+  difficulty: number;
 }
 const GameBoard: React.FC<Props> = ({
   pokemons,
   setPokemons,
   loading,
-  unCovered,
-  setUnCovered,
   lastUncovered,
   setLastUncovered,
+  checking,
+  setChecking,
+  difficulty,
 }) => {
   useEffect(() => {
     return () => {
       setPokemons([]);
-      setUnCovered([]);
     };
-  }, [setPokemons, setUnCovered]);
+  }, [setPokemons]);
   return (
     <Container fluid>
-      <Row style={{ maxHeight: '100%' }}>
+      <Row className='justify-content-center align-items-center'>
         {' '}
         {loading ? (
           <Spinner animation='grow' />
@@ -42,11 +43,12 @@ const GameBoard: React.FC<Props> = ({
               key={uuid()}
               pokemons={pokemons}
               setPokemons={setPokemons}
-              unCovered={unCovered}
-              setUnCovered={setUnCovered}
               pokemon={p}
               lastUncovered={lastUncovered}
               setLastUncovered={setLastUncovered}
+              checking={checking}
+              setChecking={setChecking}
+              difficulty={difficulty}
             />
           ))
         )}

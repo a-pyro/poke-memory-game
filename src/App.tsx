@@ -11,10 +11,10 @@ import { v4 as uuid } from 'uuid';
 
 function App() {
   const [pokemons, setPokemons] = useState([] as Pokemon[]);
-  const [unCovered, setUnCovered] = useState([] as Pokemon[]);
   const [lastUncovered, setLastUncovered] = useState({} as Pokemon);
   const [loading, setLoading] = useState(false);
   const [difficulty, setDifficulty] = useState(0);
+  const [checking, setChecking] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -48,6 +48,7 @@ function App() {
   }, [difficulty]);
   return (
     <Router>
+      <h1>FUCk you</h1>
       <Route
         path='/'
         exact
@@ -57,17 +58,21 @@ function App() {
         path='/board'
         render={() => (
           <GameBoard
-            unCovered={unCovered}
-            setUnCovered={setUnCovered}
             pokemons={pokemons}
             loading={loading}
             setPokemons={setPokemons}
             lastUncovered={lastUncovered}
             setLastUncovered={setLastUncovered}
+            checking={checking}
+            setChecking={setChecking}
+            difficulty={difficulty}
           />
         )}
       />
-      <Route path='/results' render={() => <GameOver />} />
+      <Route
+        path='/results'
+        render={() => <GameOver setDifficulty={setDifficulty} />}
+      />
     </Router>
   );
 }

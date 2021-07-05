@@ -1,24 +1,24 @@
 // typings from https://app.quicktype.io/
 
 export interface Pokemon {
-  abilities?: Ability[];
-  base_experience?: number;
-  forms?: Species[];
-  game_indices?: any[];
-  height?: number;
-  held_items?: any[];
+  abilities: Ability[];
+  base_experience: number;
+  forms: Species[];
+  game_indices: any[];
+  height: number;
+  held_items: any[];
   id: number;
-  is_default?: boolean;
-  location_area_encounters?: string;
-  moves?: any[];
-  name?: string;
-  order?: number;
-  past_types?: any[];
+  is_default: boolean;
+  location_area_encounters: string;
+  moves: any[];
+  name: string;
+  order: number;
+  past_types: any[];
   species: Species;
   sprites: Sprites;
-  stats?: Stat[];
-  types?: Type[];
-  weight?: number;
+  stats: Stat[];
+  types: Type[];
+  weight: number;
   covered?: boolean;
 }
 
