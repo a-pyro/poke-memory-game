@@ -17,8 +17,8 @@ const GameOver: React.FC<Props> = ({ setDifficulty }) => {
   };
   return (
     <Container>
-      <Row>
-        <Col>
+      <Row className='justify-content-center align-items-center min-vh-100'>
+        <Col sm={3}>
           <Button onClick={handleClick}>Play again</Button>
         </Col>
       </Row>

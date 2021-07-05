@@ -6,6 +6,7 @@ import GameBoard from './pages/game_board';
 import GameOver from './pages/game_over';
 import StartingPage from './pages/starting_page';
 import { v4 as uuid } from 'uuid';
+import ReactAudioPlayer from 'react-audio-player';
 
 //898 tot pokemon
 
@@ -48,7 +49,13 @@ function App() {
   }, [difficulty]);
   return (
     <Router>
-      <h1>FUCk you</h1>
+      <ReactAudioPlayer
+        src='/assets/pokemon_soundtrack.mp3'
+        autoPlay
+        controls
+        className='d-none'
+        muted={false}
+      />
       <Route
         path='/'
         exact
@@ -66,6 +73,7 @@ function App() {
             checking={checking}
             setChecking={setChecking}
             difficulty={difficulty}
+            setDifficulty={setDifficulty}
           />
         )}
       />

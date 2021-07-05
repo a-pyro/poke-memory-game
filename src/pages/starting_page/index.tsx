@@ -2,7 +2,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 interface Props {
   setDifficulty: React.Dispatch<React.SetStateAction<number>>;
@@ -10,44 +12,92 @@ interface Props {
 
 const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
   const history = useHistory();
+  // charmi https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg
+
+  // meleion https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg
+
+  // chariz https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg
+
   return (
-    <Container fluid>
-      <Row className='justify-content-center'>
-        <Col sm={12}>
-          <Button
-            variant='success'
-            className='rounded-pill'
+    <StyledContainer fluid>
+      <Row className='min-vh-100 justify-content-center align-items-center'>
+        <Col sm={3} className='d-flex flex-column'>
+          <h1>Pokémon memory game! Catch'em all!</h1>
+          <div
             onClick={() => {
               setDifficulty(8 / 2);
               history.push('/board');
             }}
           >
-            Easy
-          </Button>
-          <Button
-            variant='warning'
-            className='rounded-pill'
+            <Button variant='success' className='rounded mb-3 easy'>
+              Easy
+            </Button>
+            <Image
+              alt='charmander'
+              src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg'
+            />
+          </div>
+          <div
             onClick={() => {
               setDifficulty(16 / 2);
               history.push('/board');
             }}
           >
-            Regular
-          </Button>
-          <Button
-            variant='danger'
-            className='rounded-pill'
+            <Image
+              alt='charmeleon'
+              src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg'
+            />
+            <Button variant='warning' className='rounded mb-3 medium'>
+              Regular
+            </Button>
+          </div>
+          <div
             onClick={() => {
               setDifficulty(32 / 2);
               history.push('/board');
             }}
           >
-            Hard
-          </Button>
+            <Button variant='danger' className='rounded mb-3 me-3 hard'>
+              Hard
+            </Button>
+            <Image
+              alt='charizard'
+              src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg'
+            />
+          </div>
         </Col>
       </Row>
-    </Container>
+    </StyledContainer>
   );
 };
+
+const StyledContainer = styled(Container)`
+  img {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  button {
+    &.easy {
+      background-color: #92d1b3;
+      &:hover {
+        background-color: #49896f;
+      }
+    }
+
+    &.medium {
+      background-color: #6096aa;
+      border-color: #2f596d;
+      color: #fff;
+      &:hover {
+        background-color: #29738f;
+      }
+    }
+  }
+`;
 
 export default StartingPage;

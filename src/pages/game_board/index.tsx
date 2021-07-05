@@ -15,6 +15,7 @@ interface Props {
   checking: boolean;
   setChecking: React.Dispatch<React.SetStateAction<boolean>>;
   difficulty: number;
+  setDifficulty: React.Dispatch<React.SetStateAction<number>>;
 }
 const GameBoard: React.FC<Props> = ({
   pokemons,
@@ -25,15 +26,22 @@ const GameBoard: React.FC<Props> = ({
   checking,
   setChecking,
   difficulty,
+  setDifficulty,
 }) => {
   useEffect(() => {
     return () => {
       setPokemons([]);
+      setDifficulty(0);
     };
-  }, [setPokemons]);
+  }, [setPokemons, setDifficulty]);
   return (
     <Container fluid>
-      <Row className='justify-content-center align-items-center'>
+      <Row
+        style={
+          difficulty === 4 ? { maxWidth: '750px' } : { maxWidth: '1200px' }
+        }
+        className='min-vh-100 justify-content-center align-items-center mx-auto'
+      >
         {' '}
         {loading ? (
           <Spinner animation='grow' />

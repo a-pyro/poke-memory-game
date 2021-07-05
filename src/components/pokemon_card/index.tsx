@@ -85,7 +85,7 @@ const PokemonCard: React.FC<Props> = ({
   };
   return (
     <Col
-      sm={3}
+      sm={4}
       style={
         difficulty !== 16
           ? { cursor: 'pointer', height: '200px', width: '250px' }
