@@ -12,6 +12,8 @@ interface Props {
   loading: boolean;
   unCovered: Pokemon[];
   setUnCovered: React.Dispatch<React.SetStateAction<Pokemon[]>>;
+  lastUncovered: Pokemon;
+  setLastUncovered: React.Dispatch<React.SetStateAction<Pokemon>>;
 }
 const GameBoard: React.FC<Props> = ({
   pokemons,
@@ -19,12 +21,15 @@ const GameBoard: React.FC<Props> = ({
   loading,
   unCovered,
   setUnCovered,
+  lastUncovered,
+  setLastUncovered,
 }) => {
   useEffect(() => {
     return () => {
       setPokemons([]);
+      setUnCovered([]);
     };
-  }, [setPokemons]);
+  }, [setPokemons, setUnCovered]);
   return (
     <Container fluid>
       <Row style={{ maxHeight: '100%' }}>
@@ -40,6 +45,8 @@ const GameBoard: React.FC<Props> = ({
               unCovered={unCovered}
               setUnCovered={setUnCovered}
               pokemon={p}
+              lastUncovered={lastUncovered}
+              setLastUncovered={setLastUncovered}
             />
           ))
         )}

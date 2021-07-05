@@ -12,6 +12,7 @@ import { v4 as uuid } from 'uuid';
 function App() {
   const [pokemons, setPokemons] = useState([] as Pokemon[]);
   const [unCovered, setUnCovered] = useState([] as Pokemon[]);
+  const [lastUncovered, setLastUncovered] = useState({} as Pokemon);
   const [loading, setLoading] = useState(false);
   const [difficulty, setDifficulty] = useState(0);
 
@@ -61,6 +62,8 @@ function App() {
             pokemons={pokemons}
             loading={loading}
             setPokemons={setPokemons}
+            lastUncovered={lastUncovered}
+            setLastUncovered={setLastUncovered}
           />
         )}
       />
