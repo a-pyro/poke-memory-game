@@ -21,9 +21,10 @@ const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
   return (
     <StyledContainer fluid>
       <Row className='min-vh-100 justify-content-center align-items-center'>
-        <Col sm={3} className='d-flex flex-column'>
-          <h1>Pokémon memory game! Catch'em all!</h1>
+        <Col sm={4} className='d-flex flex-column'>
+          <h1 className='text-center'>Pokémon memory game! Catch'em all!</h1>
           <div
+            className='box d-flex align-items-center justify-content-center'
             onClick={() => {
               setDifficulty(8 / 2);
               history.push('/board');
@@ -38,6 +39,7 @@ const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
             />
           </div>
           <div
+            className='box d-flex align-items-center justify-content-center'
             onClick={() => {
               setDifficulty(16 / 2);
               history.push('/board');
@@ -52,6 +54,7 @@ const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
             </Button>
           </div>
           <div
+            className='box d-flex align-items-center justify-content-center'
             onClick={() => {
               setDifficulty(32 / 2);
               history.push('/board');
@@ -72,13 +75,15 @@ const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
 };
 
 const StyledContainer = styled(Container)`
+  .box:hover {
+    transition: 0.2s all ease;
+    transform: scale(1.1);
+  }
+
   img {
     width: 150px;
     height: 150px;
     cursor: pointer;
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 
   button {
