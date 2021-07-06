@@ -44,7 +44,7 @@ const GameBoard: React.FC<Props> = ({
       >
         {' '}
         {loading ? (
-          <Spinner animation='grow' />
+          <Spinner animation='grow' variant='danger' />
         ) : (
           pokemons.map((p) => (
             <PokemonCard

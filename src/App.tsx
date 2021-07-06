@@ -9,6 +9,7 @@ import { v4 as uuid } from 'uuid';
 import ReactAudioPlayer from 'react-audio-player';
 
 //898 tot pokemon
+// TODO: fix mobile view
 
 function App() {
   const [pokemons, setPokemons] = useState([] as Pokemon[]);
@@ -30,7 +31,6 @@ function App() {
           );
           const data = await response.json();
 
-          console.log(data);
           const firstPokemon = { ...data, id: uuid(), covered: true };
           const secondPokemon = { ...data, id: uuid(), covered: true };
           setPokemons((prevState) =>
@@ -50,11 +50,11 @@ function App() {
   return (
     <Router>
       <ReactAudioPlayer
-        src='/assets/pokemon_soundtrack.mp3'
-        autoPlay
+        src='https://res.cloudinary.com/a-pyro/video/upload/v1625572547/poke-game-music-service/pokemon_soundtrack_t41o8j.mp3'
+        autoPlay={true}
         controls
+        loop={true}
         className='d-none'
-        muted={false}
       />
       <Route
         path='/'
