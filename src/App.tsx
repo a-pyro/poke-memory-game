@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { Pokemon } from './typings/pokemon';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -9,7 +8,10 @@ import { v4 as uuid } from 'uuid';
 import ReactAudioPlayer from 'react-audio-player';
 
 //898 tot pokemon
-// TODO: fix mobile view
+// TODO:
+// fix mobile view
+// fix audio
+// implement timer & results w/localStorage
 
 function App() {
   const [pokemons, setPokemons] = useState([] as Pokemon[]);

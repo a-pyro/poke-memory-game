@@ -107,9 +107,3 @@ const PokemonCard: React.FC<Props> = ({
 };
 
 export default PokemonCard;
-
-// src={
-//         pokemons.map((p) => p.id).includes(pokemon.id)
-//           ? '/assets/pokeball.png'
-//           : pokemon.sprites?.other?.['official-artwork'].front_default
-//       }

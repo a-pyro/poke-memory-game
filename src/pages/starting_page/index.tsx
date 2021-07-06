@@ -12,11 +12,6 @@ interface Props {
 
 const StartingPage: React.FC<Props> = ({ setDifficulty }) => {
   const history = useHistory();
-  // charmi https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg
-
-  // meleion https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg
-
-  // chariz https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg
 
   return (
     <StyledContainer fluid>
